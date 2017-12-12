@@ -18,10 +18,9 @@ document.onkeyup = function(event) {
   // Randomly choose a letter from the "options" array. This is the Computer's guess.
   var computerGuess = options[Math.floor(Math.random() * options.length)];
 
-    if (lettersGuessed.indexOf(userGuess) < 0 && options.indexOf(userGuess) >= 0) {
-        lettersGuessed[lettersGuessed.length] = userGuess;
-    // if it is a new letter then decrease remaining guesses by 1
-        remainingGuesses--;
+     if (lettersGuessed.indexOf(userGuess) < 0 && options.indexOf(userGuess) >=0) {
+        lettersGuessed[lettersguessed.length] = userGuess;
+        guessesLeft--;
     }
 
     if userGuess = computerGuess {
