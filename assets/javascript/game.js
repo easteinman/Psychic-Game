@@ -21,7 +21,7 @@ document.onkeyup = function(event) {
   lettersGuessed.push(userGuess); 
     
     // If user guesses correctly, record that as a win and alert the user. Then reset remainingGuesses to 9, lettersGuessed to empty, and a new computerGuess so they can play again.
-    if (userGuess = computerGuess) {
+    if (userGuess == computerGuess) {
         wins++;
         alert("Well, congrats...you're psychic. But you already knew that.");
         remainingGuesses = 9;
