@@ -29,7 +29,7 @@ document.onkeyup = function(event) {
         computerGuess = options[Math.floor(Math.random() * options.length)]; 
     }
     // If user guesses 9 times incorrectly, record that as a loss and alert the user. Then reset remainingGuesses to 9, lettersGuessed to empty, and a new computerGuess so they can play again.
-    else if (remainingGuesses == 0) {
+    if (remainingGuesses == 0) {
         losses++;
         alert("Fraud! You're not psychic.");
         remainingGuesses = 9;
@@ -37,11 +37,10 @@ document.onkeyup = function(event) {
         computerGuess = options[Math.floor(Math.random() * options.length)]; 
     }
     // If user guess does not equal computer guess decrease reaminingGuesses by 1.
-    else if (userGuess !== computerGuess){
+    if (userGuess !== computerGuess){
             remainingGuesses--;
     }  
 
-};
     // Creating a variable to hold the new HTML. This will allow the HTML to keep track of the user and computer guesses, and the wins/losses.
     var html =
           "<p>Wins: " + wins + "</p>" +
@@ -51,5 +50,5 @@ document.onkeyup = function(event) {
 
         // Set the inner HTML contents of the #game div to our html string
         document.querySelector("#game").innerHTML = html;
-      }
-    };
+      
+};
