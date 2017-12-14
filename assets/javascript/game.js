@@ -18,34 +18,36 @@ document.onkeyup = function(event) {
   // Randomly choose a letter from the "options" array. This is the Computer's guess.
   var computerGuess = options[Math.floor(Math.random() * options.length)];
 
-     if (lettersGuessed.indexOf(userGuess) < 0 && options.indexOf(userGuess) >=0) {
-        lettersGuessed[lettersguessed.length] = userGuess;
-        guessesLeft--;
-    }
-
-    if userGuess = computerGuess {
+  lettersGuessed.push(userGuess); 
+    
+    // If user guesses correctly, record that as a win and alert the user. Then reset remainingGuesses to 9, lettersGuessed to empty, and a new computerGuess so they can play again.
+    if (userGuess = computerGuess) {
         wins++;
         alert("Well, congrats...you're psychic. But you already knew that.");
         remainingGuesses = 9;
         lettersGuessed = [];
         computerGuess = options[Math.floor(Math.random() * options.length)]; 
     }
-
-    if remainingGuesses == 0 {
+    // If user guesses 9 times incorrectly, record that as a loss and alert the user. Then reset remainingGuesses to 9, lettersGuessed to empty, and a new computerGuess so they can play again.
+    else if (remainingGuesses == 0) {
         losses++;
         alert("Fraud! You're not psychic.");
         remainingGuesses = 9;
         lettersGuessed = [];
         computerGuess = options[Math.floor(Math.random() * options.length)]; 
     }
+    // If user guess does not equal computer guess decrease reaminingGuesses by 1.
+    else if (userGuess !== computerGuess){
+            remainingGuesses--;
+    }  
 
-
+};
     // Creating a variable to hold the new HTML. This will allow the HTML to keep track of the user and computer guesses, and the wins/losses.
     var html =
           "<p>Wins: " + wins + "</p>" +
           "<p>Losses: " + losses + "</p>" +
           "<p>Guesses Left: " + remainingGuesses + "</p>" +
-          "<p>Your Guesses so far: " + lettersGuessed + "</p>" +;
+          "<p>Your Guesses so far: " + lettersGuessed + "</p>"
 
         // Set the inner HTML contents of the #game div to our html string
         document.querySelector("#game").innerHTML = html;
